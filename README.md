@@ -1,106 +1,70 @@
-# Dynamic Therapeutic Games
+# Ollama Personalized Game
 
-A web application that dynamically generates customized therapeutic 3D shooter games based on user input. Users describe what they're struggling with, and the application creates a personalized game experience where players combat negative thoughts with positive, therapeutic affirmations.
+A dynamic therapeutic game generator that creates personalized 3D shooter games to help users transform negative thoughts into positive ones. This application uses Ollama's local LLM capabilities to generate game content based on user input.
 
 ## Features
 
-- **Custom Game Generation**: Create personalized therapeutic games based on user input
-- **LLM Integration**: Uses Ollama to generate therapeutic content tailored to specific situations
-- **Interactive 3D Experience**: Engaging gameplay that helps reframe negative thoughts
-- **Multiple Model Support**: Compatible with various LLMs available through Ollama
+- **Personalized Game Creation**: Create games tailored to your specific challenges or emotional needs
+- **Local AI Integration**: Uses Ollama to run LLMs locally on your machine
+- **Robust JSON Parsing**: Enhanced error handling and data validation
+- **3D Therapeutic Gaming**: Engaging shooter-style game mechanics for transforming negative thoughts
+- **Easy Web Interface**: Simple browser-based UI for creating custom games
 
-## Prerequisites
+## Quick Start
 
-- Python 3.8+
-- Ollama (for local LLM inference)
-- A web browser with WebGL support
-
-## Installation
-
-1. **Install Ollama**
-
-   Visit [Ollama's website](https://ollama.ai/) to download and install Ollama for your operating system.
-
-2. **Install Python Dependencies**
-
+1. **Setup the environment**:
    ```bash
-   # Navigate to the dynamic_games directory
-   cd dynamic_games
-   
-   # Install required packages
+   # Clone the repository
+   git clone https://github.com/felixwulf7/ollama_personlized_game.git
+   cd ollama_personlized_game
+
+   # Create and activate virtual environment
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+   # Install dependencies
    pip install -r requirements.txt
    ```
 
-3. **Pull Required Models**
+2. **Setup Ollama**:
+   - Install Ollama from [https://ollama.ai/](https://ollama.ai/)
+   - Pull the Gemma model: `ollama pull gemma:7b`
+   - Start Ollama
 
+3. **Run the application**:
    ```bash
-   # Pull the default model (Gemma 7B)
-   ollama pull gemma:7b
-   
-   # Optionally pull other models
-   # ollama pull llama3
-   # ollama pull gemma:2b
+   # On macOS/Linux
+   ./start_app.sh
+
+   # On Windows
+   start_app.bat
    ```
 
-## Usage
-
-1. **Start the Server**
-
-   ```bash
-   # Navigate to the dynamic_games directory
-   cd dynamic_games
-   
-   # Run the server
-   python server.py
-   ```
-
-2. **Access the Web Interface**
-
-   Open your web browser and navigate to:
-   ```
-   http://localhost:5000
-   ```
-
-3. **Generate a Custom Game**
-
-   - Enter what you're struggling with in the text area
-   - Select an LLM model from the dropdown
-   - Click "Generate Custom Game"
-   - Wait for the game to be generated
-   - Click "Play Your Custom Game" to start playing
+4. **Access the application**:
+   Open your browser and go to `http://localhost:5000`
 
 ## How It Works
 
-1. The user describes what they're struggling with (e.g., "anxiety about job loss")
-2. The Flask server sends this input to an LLM via Ollama
-3. The LLM generates custom therapeutic content, including:
-   - A relevant game title
-   - 5 positive affirmations
-   - 5 corresponding negative thoughts
-4. The server creates a custom HTML game file by modifying the template game
-5. The user plays the personalized game, shooting positive thoughts at negative ones
+1. User enters a challenge they're facing (e.g., "anxiety about public speaking")
+2. The application sends a prompt to the Ollama-powered LLM
+3. The LLM generates personalized game content, including:
+   - A meaningful game title
+   - 5 positive thoughts/affirmations
+   - 5 corresponding negative thoughts to transform
+4. The application creates an HTML game file that allows players to "shoot" negative thoughts and replace them with positive alternatives
+5. The generated game file is saved and can be accessed and played repeatedly
 
-## Game Controls
+## Detailed Setup
 
-- **WASD** or **Arrow Keys**: Move
-- **Space**: Jump
-- **Mouse**: Aim
-- **Left Click**: Shoot
-- **1-5** or **Click on Text**: Switch between positive thoughts
+For detailed setup instructions, see [SETUP.md](SETUP.md).
 
-## Troubleshooting
+## Technologies Used
 
-- **Ollama Not Running**: Ensure Ollama is running in the background
-- **Model Not Found**: Use `ollama pull <model_name>` to download required models
-- **Server Won't Start**: Check if port 5000 is already in use by another application
-- **Game Performance Issues**: Try a smaller browser window or lower resolution
-
-## Customization
-
-- Update the template game path in `server.py` if you move or rename the template game
-- Modify the prompt in `generate_with_ollama()` to change how content is generated
-- Edit the HTML/CSS in `index.html` to customize the web interface
+- **Backend**: Python, Flask, Flask-CORS
+- **Frontend**: HTML, CSS, JavaScript
+- **AI**: Ollama with Gemma model
+- **Game Engine**: Custom 3D HTML/JavaScript game
 
 ## License
 
-This project is for educational and therapeutic purposes only. It is not a substitute for professional mental health care. 
+This project is licensed under the MIT License. 
